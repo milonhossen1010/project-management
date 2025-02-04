@@ -35,8 +35,10 @@ const limiter = rateLimit({ windosMs: 15 * 60 * 1000, max: 3000 });
 app.use(limiter);
 
 // Mongo DB Database Connection
-let URI = 'mongodb://127.0.0.1/project-mangement';
-let OPTION={user:'',pass:'', autoIndex:true}
+// let URI = 'mongodb://127.0.0.1/projectmanagement';
+let URI =
+  'mongodb+srv://milonpc:<db_password>@cluster0.jsz5r.mongodb.net/projectmanagement';
+let OPTION = { user: 'milonpc', pass: 'milonpc123', autoIndex: true };
 mongoose
   .connect(URI, OPTION)
   .then(() => console.log('MongoDB Connect Successfull.'))
