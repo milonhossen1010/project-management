@@ -63,3 +63,17 @@ exports.listTaskByStatus = (req, res) => {
     .then(data => res.status(200).json({ status: "Success", data }))
     .catch(err => res.status(400).json({ status: "Fail", err }))
 }
+
+
+//TasksStatusCount
+exports.taskStatusCount = (req, res) => {
+  let email = req.headers['email']
+
+  //Status get with count
+  TasksModel.aggregate([
+    { $match: { email: email } },
+    { $group: { _id: "$status", sum: { $count: {} } } }
+  ])
+    .then(data => res.status(200).json({ status: "Success", data }))
+    .catch(err => res.status(400).json({status:"Fail", err}));
+}
