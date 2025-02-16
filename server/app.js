@@ -36,9 +36,12 @@ app.use(limiter);
 
 // Mongo DB Database Connection
 // let URI = 'mongodb://127.0.0.1/projectmanagement';
-let URI =
-  'mongodb+srv://milonpc:<db_password>@cluster0.jsz5r.mongodb.net/projectmanagement';
+let URI ='mongodb+srv://milonpc:<db_password>@cluster0.jsz5r.mongodb.net/projectmanagement';
 let OPTION = { user: 'milonpc', pass: 'milonpc123', autoIndex: true };
+
+// let URI ='mongodb://localhost:27017/projectmanagement';
+// let OPTION = { };
+
 mongoose
   .connect(URI, OPTION)
   .then(() => console.log('MongoDB Connect Successfull.'))

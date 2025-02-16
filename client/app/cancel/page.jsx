@@ -1,11 +1,10 @@
-import Dashboard from "@/components/Dashboard/Dashboard";
+import CancelTask from "@/components/Cancel/CancelTask";
 import DashboardLayout from "@/components/DashboardLayout";
 
-
-export default function Home() {
+export default function Cancel() {
   return (
     <DashboardLayout>
-      <Dashboard />
+      <CancelTask />
     </DashboardLayout>
   );
 }

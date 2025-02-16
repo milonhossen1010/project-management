@@ -1,5 +1,5 @@
 const express = require("express");
-const { Registrtion, UpdateUser, Login } = require("../controllers/UsersController");
+const { UpdateUser, Login, Registration} = require("../controllers/UsersController");
 const router = express.Router();
 const AuthVerifyMiddleware = require("../middleware/AuthVerifyMiddleware");
 const { createTask, deleteTaks, updateTaskStatus, listTaskByStatus, taskStatusCount } = require("../controllers/TasksCongroller");
@@ -7,7 +7,7 @@ const { createTask, deleteTaks, updateTaskStatus, listTaskByStatus, taskStatusCo
 
 
 //User
-router.post("/registration", Registrtion);
+router.post("/registration", Registration);
 router.post("/login", Login);
 router.post('/updateUser', AuthVerifyMiddleware, UpdateUser);
 

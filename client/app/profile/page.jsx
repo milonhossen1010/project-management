@@ -1,11 +1,9 @@
-import Dashboard from "@/components/Dashboard/Dashboard";
 import DashboardLayout from "@/components/DashboardLayout";
 
-
-export default function Home() {
+export default function Profile() {
   return (
     <DashboardLayout>
-      <Dashboard />
+      <h1>Profile</h1>
     </DashboardLayout>
   );
 }

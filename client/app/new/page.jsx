@@ -1,11 +1,10 @@
-import Dashboard from "@/components/Dashboard/Dashboard";
 import DashboardLayout from "@/components/DashboardLayout";
+import NewTask from "@/components/New/NewTask";
 
-
-export default function Home() {
+export default function New() {
   return (
     <DashboardLayout>
-      <Dashboard />
+      <NewTask />
     </DashboardLayout>
   );
 }

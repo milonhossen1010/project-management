@@ -1,11 +1,10 @@
-import Dashboard from "@/components/Dashboard/Dashboard";
 import DashboardLayout from "@/components/DashboardLayout";
 
 
-export default function Home() {
+export default function AllTasks() {
   return (
     <DashboardLayout>
-      <Dashboard />
+      <div>All </div>
     </DashboardLayout>
-  );
+  )
 }

@@ -1,11 +1,10 @@
-import Dashboard from "@/components/Dashboard/Dashboard";
 import DashboardLayout from "@/components/DashboardLayout";
+import ProgressTask from "@/components/Progress/ProgressTask";
 
-
-export default function Home() {
+export default function Progress() {
   return (
     <DashboardLayout>
-      <Dashboard />
+      <ProgressTask />
     </DashboardLayout>
   );
 }

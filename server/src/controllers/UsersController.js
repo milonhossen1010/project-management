@@ -2,12 +2,12 @@ const UserModel = require('../models/UsersModel');
 const jwt = require('jsonwebtoken');
 
 //Registration
-exports.Registrtion = (req, res) => {
+exports.Registration = (req, res) => {
   let reqBody = req.body;
 
   UserModel.create(reqBody)
     .then(data => res.status(201).json({ status: 'Success', data }))
-    .catch(err => res.status(400).json({ status: 'Fail', err }));
+    .catch(err => res.status(201).json({ status: 'Fail', err }));
 };
 
 //Login
@@ -46,7 +46,7 @@ exports.Login = (req, res) => {
           res.status(401).json({ status: 'Unauthorized!' });
         }
       })
-      .catch(err => res.status(400).json({ status: 'Fail', err }));
+      .catch(err => res.status(200).json({ status: 'Fail', err }));
   } else {
     //Email and password is blank
     res.status(404).json({status:"Email and Password are require!"})
@@ -63,5 +63,5 @@ exports.UpdateUser = (req, res) => {
 
   UserModel.updateOne({ email: email }, reqBody)
     .then(data => res.status(200).json({ status: "Success", data }))
-    .catch(err => res.status(400).json({ status: "Fail", err }));
+    .catch(err => res.status(200).json({ status: "Fail", err }));
 };
