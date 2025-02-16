@@ -43,7 +43,7 @@ exports.Login = (req, res) => {
         } else {
 
           //Email and Password is not match
-          res.status(401).json({ status: 'Unauthorized!' });
+          res.status(200).json({ status: 'Email and Password is not match!' });
         }
       })
       .catch(err => res.status(200).json({ status: 'Fail', err }));

@@ -26,8 +26,24 @@ export function RegistrationRequest(
 
     if (res.status === 201) {
 
-      toast.success('Registration Successfull!');
-      return true;
+      if (res.data['status'] === 'Fail') {
+        if (res.data['err']['keyPattern']['email'] === 1) {
+          toast.error('Email alreay exist.');
+        } else if (
+          res.data['err']['keyPattern']['mobile'] === 1
+        ) {
+          toast.error('Phone alreay exist.');
+        } else {
+          toast.error('Something went wrong');
+        }
+
+        return false;
+      } else {
+        toast.success('Registration Successfull!');
+        return true;
+      }
+
+     
       
     } else {
       toast.error("201 Status Not found");
@@ -36,41 +52,39 @@ export function RegistrationRequest(
     
   }).catch(err => {
    
-   
-    if (err.status === 400) {
+    toast.error('Something went wrong');
+    return false;
 
-      if (err['response']['data']['status'] === 'Fail') {
-
-        if (err['response']['data']['err']['keyPattern']['email'] === 1) {
-          toast.error('Email alreay exist.');
-        } else if (
-          err['response']['data']['err']['keyPattern']['mobile'] === 1
-        ) {
-          toast.error('Phone alreay exist.');
-        } else {
-          toast.error('Something went wrong one.');
-        }
-
-        return false;
-
-      } else {
-        
-        toast.error('Errors');
-        return false;
-
-      }
+  })
+}
 
 
+
+//Login
+export function LoginRequest(email, password) {
+  let URL = BaseURL + '/login';
+  let PostBody = { email: email, password: password };
+
+  return axios.post(URL, PostBody).then(res => {
+
+    if (res.status === 200) {
+      
+      setToken(res.token);
+      setUserDetails(res.data)
+      toast.success("Login Success")
+      return true;
 
     } else {
-      
+
+      toast.error("Email and Password is Not Match.")
       return false;
+
     }
-    
-    
-    
-  //  console.log(err['response']['data']['err']['keyPattern']['email']);
-    // toast.error('Erros');
-    // return false;
+
+  }).catch(err => {
+
+    toast.error("Something Went Wrong.");
+    return false;
+
   })
 }
