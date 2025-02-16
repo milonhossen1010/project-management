@@ -38,12 +38,12 @@ exports.Login = (req, res) => {
           //Response 
           res
             .status(200)
-            .json({ status: 'Sucess', token: token, data: data[0] });
+            .json({ status: 'Success', token: token, data: data[0] });
           
         } else {
 
           //Email and Password is not match
-          res.status(200).json({ status: 'Email and Password is not match!' });
+          res.status(200).json({ status:"Fail", mes: 'Email and Password is not match!' });
         }
       })
       .catch(err => res.status(200).json({ status: 'Fail', err }));

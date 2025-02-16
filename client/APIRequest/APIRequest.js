@@ -66,22 +66,20 @@ export function LoginRequest(email, password) {
   let PostBody = { email: email, password: password };
 
   return axios.post(URL, PostBody).then(res => {
+   console.log(res)
 
-    if (res.status === 200) {
-      
-      setToken(res.token);
-      setUserDetails(res.data)
-      toast.success("Login Success")
+    if (res.status === 200 && res['data']['status'] === 'Success') {
+      // setToken(res.token);
+      // setUserDetails(res.data)
+      toast.success('Login Success');
       return true;
-
     } else {
-
-      toast.error("Email and Password is Not Match.")
+      toast.error('Email and Password is Not Match.');
       return false;
-
     }
 
   }).catch(err => {
+
 
     toast.error("Something Went Wrong.");
     return false;
